@@ -27,6 +27,7 @@ pub struct CameraController {
     pub orbit_focus: Vec3,
     pub orbit_mode: bool,
     pub scroll_wheel_speed: f32,
+    pub lock_y: bool,
 }
 
 impl CameraController {
@@ -83,6 +84,7 @@ impl Default for CameraController {
             orbit_focus: Vec3::ZERO,
             orbit_mode: false,
             scroll_wheel_speed: 0.1,
+            lock_y: false,
         }
     }
 }
@@ -162,7 +164,7 @@ pub fn camera_controller(
         }
         let forward = transform.forward();
         let right = transform.right();
-        let translation_delta = options.velocity.x * dt * right
+        let mut translation_delta = options.velocity.x * dt * right
             + options.velocity.y * dt * Vec3::Y
             + options.velocity.z * dt * forward;
         let mut scroll_translation = Vec3::ZERO;
@@ -171,6 +173,9 @@ pub fn camera_controller(
                 * transform.translation.distance(options.orbit_focus)
                 * options.scroll_wheel_speed
                 * forward;
+        }
+        if options.lock_y {
+            translation_delta *= Vec3::new(1.0, 0.0, 1.0);
         }
         transform.translation += translation_delta + scroll_translation;
         options.orbit_focus += translation_delta;

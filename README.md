@@ -8,6 +8,11 @@ Depends on bevy 0.8
 
 ## Usage:
 
+```toml
+[dependencies]
+bevy_basic_camera = { git = "https://github.com/DGriffin91/bevy_basic_camera" }
+```
+
 ```rust
 use bevy_basic_camera::{CameraController, CameraControllerPlugin};
 ```

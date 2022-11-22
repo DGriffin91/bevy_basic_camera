@@ -23,5 +23,5 @@ app.add_plugin(CameraControllerPlugin)
 
 ```rust
 // camera
-commands.spawn_bundle(Camera3dBundle::default()).insert(CameraController::default());
+commands.spawn(Camera3dBundle::default()).insert(CameraController::default());
 ```

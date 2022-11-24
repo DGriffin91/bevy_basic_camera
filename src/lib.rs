@@ -4,7 +4,7 @@ use bevy::{
 };
 
 /// Provides basic movement functionality to the attached camera
-#[derive(Component)]
+#[derive(Component, Clone)]
 pub struct CameraController {
     pub enabled: bool,
     pub initialized: bool,
@@ -186,6 +186,8 @@ pub fn camera_controller(
             for mouse_event in mouse_events.iter() {
                 mouse_delta += mouse_event.delta;
             }
+        } else {
+            mouse_events.clear();
         }
 
         if mouse_delta != Vec2::ZERO {

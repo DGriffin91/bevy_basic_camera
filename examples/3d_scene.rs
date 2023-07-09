@@ -5,9 +5,8 @@ use bevy_basic_camera::{CameraController, CameraControllerPlugin};
 
 fn main() {
     App::new()
-        .add_plugins(DefaultPlugins)
-        .add_plugin(CameraControllerPlugin)
-        .add_startup_system(setup)
+        .add_plugins((DefaultPlugins, CameraControllerPlugin))
+        .add_systems(Startup, setup)
         .run();
 }
 

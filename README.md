@@ -2,7 +2,7 @@
 
 Based on: https://github.com/bevyengine/bevy/pull/4458
 
-Depends on bevy 0.16
+Depends on bevy 0.17
 
 `cargo run --example 3d_scene`
 

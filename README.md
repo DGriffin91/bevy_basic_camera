@@ -1,8 +1,20 @@
 # Basic Bevy Camera
 
-Based on: https://github.com/bevyengine/bevy/pull/4458
+## Bevy now has a very similar built-in camera controller. I recommend using it instead:
+```rs
+use bevy::camera_controller::free_camera::{FreeCamera, FreeCameraPlugin};
+```
+```rs
+app.add_plugins(FreeCameraPlugin);
+```
+```rs
+commands.spawn((Camera3d::default(), FreeCamera::default()));
+```
 
-Depends on bevy 0.18
+
+## bevy_basic_camera:
+
+Based on: https://github.com/bevyengine/bevy/pull/4458
 
 `cargo run --example 3d_scene`
 
